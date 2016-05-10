@@ -20,14 +20,13 @@ function FindProxyForURL(url, host) {
     var pos = host.lastIndexOf(".");
     pos = host.lastIndexOf(".", pos - 1);
     
-    if(isPlainHostName(host)){
-	if ( shExpMatch(host, "localhost") || 
-	isInNet(host, "10.0.0.0", "255.0.0.0") || 
-	isInNet(host, "172.16.0.0", "255.240.0.0") || 
-	isInNet(host, "192.168.0.0", "255.255.0.0") || 
-	isInNet(host, "127.0.0.0", "255.255.255.0"))
-		return "DIRECT"; 
-	}
+    if ( shExpMatch(host, "localhost") || 
+    isInNet(host, "10.0.0.0", "255.0.0.0") || 
+    isInNet(host, "172.16.0.0", "255.240.0.0") || 
+    isInNet(host, "192.168.0.0", "255.255.0.0") || 
+    isInNet(host, "127.0.0.0", "255.255.255.0"))
+	return "DIRECT";
+
     if(host.indexOf("google") != -1 || host.indexOf("blogspot") != -1)
     	return proxy;
 
