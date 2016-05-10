@@ -92,7 +92,7 @@ function update(){
 		file_put_contents($localFile, $data);
 	}
 	curl_close($ch);
-	header("Refresh:0");
+	header("Location: ".$_SERVER['PHP_SELF']);
 }
 
 function parse_gfwlist($content) {
