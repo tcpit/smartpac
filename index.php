@@ -27,8 +27,7 @@ function FindProxyForURL(url, host) {
     isInNet(host, "127.0.0.0", "255.255.255.0"))
 	return "DIRECT";
 
-    //if(host.indexOf("google") != -1 || host.indexOf("blogspot") != -1)
-    if(shExpMatch(host, "*google*.*) || shExpMatch(host, "*blogspot.*"))
+    if(shExpMatch(host, "*google*.*") || shExpMatch(host, "*blogspot.*"))
     	return proxy;
 
     while(1) {
