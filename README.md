@@ -29,7 +29,7 @@ mode = {
     mini,       // fetch the latest gfwminilist.txt/index.php only
     custom,     // override the configuration via url parameters
     custommini, // both custom and mini are enabled
-    customall, // both custom and all are enabled
+    customall,  // both custom and all are enabled
     smartmini,  // both smart and mini are enabled
 }
 ```
