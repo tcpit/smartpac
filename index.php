@@ -162,7 +162,7 @@ if(strpos($mode, "custom") !== false){
 }
 
 
-if($mode === "update"){
+if(strpos($mode, "update") !== false){
 	update();
 }
 $domainList = "";
