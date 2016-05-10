@@ -20,7 +20,12 @@ $PAC_DIRECT = "DIRECT";
 * `http://yourdomain/index.php` 
 * `http://yourdomain/index.php?mode=all`
 * `http://yourdomain/index.php?mode=mini`
+* `http://yourdomain/index.php?mode=smartmini`
+* `http://yourdomain/index.php?mode=custom&proxytype=HTTP&proxyserver=abcdef.com&proxyport=80`
 * `http://yourdomain/index.php?mode=custom&proxytype=SOCKS5&proxyserver=abcdef.com&proxyport=1080&directtype=HTTP&directserver=hijiklmn.net&directport=1080`
+* `http://yourdomain/index.php?mode=customall&proxytype=HTTP&proxyserver=abcdef.com&proxyport=80`
+* `http://yourdomain/index.php?mode=custommini&proxytype=SOCKS5&proxyserver=abcdef.com&proxyport=1080`
+* Force update: `http://yourdomain/index.php?mode=update`
 ```php
 mode = {
     smart,      // default(optional), load the configuration from config.php
