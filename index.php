@@ -11,8 +11,8 @@ $PAC_LISTURLS = array(
 	);
 
 $PAC_TEMPLATE_SMART = <<<PAC_TEMPLATE_SMART
-var proxy = "%1\$s; DIRECT;";
-var direct = "%2\$s;";
+var proxy = "%1\$s; DIRECT";
+var direct = "%2\$s";
 var domains = { %3\$s };
 var hasOwnProperty = Object.hasOwnProperty;
 function FindProxyForURL(url, host) {
@@ -47,7 +47,7 @@ function FindProxyForURL(url, host) {
 PAC_TEMPLATE_SMART;
 
 $PAC_TEMPLATE_ALL = <<<PAC_TEMPLATE_ALL
-var proxy = "%1\$s; DIRECT;";
+var proxy = "%1\$s; DIRECT";
 function FindProxyForURL(url, host) {
     var isIpV4Addr = /^(\d+.){3}\d+$/;
     if(isPlainHostName(host) || shExpMatch(host, "localhost") || shExpMatch(host, "*.local") ||
