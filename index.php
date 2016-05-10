@@ -20,13 +20,12 @@ function FindProxyForURL(url, host) {
     var pos = host.lastIndexOf(".");
     pos = host.lastIndexOf(".", pos - 1);
     
-    if(shExpMatch(host, "localhost")) return direct;
-    else if(shExpMatch(host, "127.0.0.1")) return direct;
-    else if(shExpMatch(host, "10.[0-9]+.[0-9]+.[0-9]+")) return direct;
-    else if(shExpMatch(host, "172.[0-9]+.[0-9]+.[0-9]+")) return direct;
-    else if(shExpMatch(host, "192.168.[0-9]+.[0-9]+")) return direct;
-    else if(host.indexOf("google") != -1 || host.indexOf("blogspot") != -1)
-    	return proxy;
+    if(shExpMatch(host, "localhost")) return "DIRECT";
+    else if(shExpMatch(host, "127.0.0.1")) return "DIRECT";
+    else if(shExpMatch(host, "10.[0-9]+.[0-9]+.[0-9]+")) return "DIRECT";
+    else if(shExpMatch(host, "172.[0-9]+.[0-9]+.[0-9]+")) return "DIRECT";
+    else if(shExpMatch(host, "192.168.[0-9]+.[0-9]+")) return "DIRECT";
+    else if(shExpMatch(host, "*google*.*") || shExpMatch(host, "*blogspot.*)) return proxy;
 
     while(1) {
         if (pos <= 0) {
@@ -159,7 +158,7 @@ if(strpos($mode, "custom") !== false){
 }
 
 
-if($mode === "update"){
+if(strpos($mode, "update") !== false){
 	update();
 }
 $domainList = "";
