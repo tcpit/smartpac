@@ -20,10 +20,12 @@ function FindProxyForURL(url, host) {
     var pos = host.lastIndexOf(".");
     pos = host.lastIndexOf(".", pos - 1);
     
-    if (shExpMatch(host, "localhost") || 
-    isInNet(host, "10.0.0.0", "255.0.0.0") || 
-    isInNet(host, "172.16.0.0", "255.240.0.0") || 
-    isInNet(host, "192.168.0.0", "255.255.0.0") || 
+    if (isPlainHostName(host) ||
+    shExpMatch(host, "localhost") ||
+    shExpMatch(host, "*.local") ||
+    isInNet(host, "10.0.0.0", "255.0.0.0") ||
+    isInNet(host, "172.16.0.0", "255.240.0.0") ||
+    isInNet(host, "192.168.0.0", "255.255.0.0") ||
     isInNet(host, "127.0.0.0", "255.255.255.0"))
 	return "DIRECT";
 
@@ -50,6 +52,14 @@ PAC_TEMPLATE_SMART;
 $PAC_TEMPLATE_ALL = <<<PAC_TEMPLATE_ALL
 var proxy = "%1\$s; DIRECT;";
 function FindProxyForURL(url, host) {
+    if (isPlainHostName(host) ||
+    shExpMatch(host, "localhost") ||
+    shExpMatch(host, "*.local") ||
+    isInNet(host, "10.0.0.0", "255.0.0.0") ||
+    isInNet(host, "172.16.0.0", "255.240.0.0") ||
+    isInNet(host, "192.168.0.0", "255.255.0.0") ||
+    isInNet(host, "127.0.0.0", "255.255.255.0"))
+	return "DIRECT";
     return proxy;
 }
 PAC_TEMPLATE_ALL;
