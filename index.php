@@ -1,6 +1,5 @@
 <?php
 require_once("config.php");
-
 /****************************************************************************
 * Global variables
 *****************************************************************************/
@@ -9,7 +8,6 @@ $PAC_LISTURLS = array(
 	"https://raw.githubusercontent.com/tcpit/smartpac/master/gfwminilist.txt" => "gfwminilist.txt",
 	"https://raw.githubusercontent.com/tcpit/smartpac/master/index.php" => "index.php",
 	);
-
 $PAC_TEMPLATE_SMART = <<<PAC_TEMPLATE_SMART
 var proxy = "%1\$s; DIRECT";
 var direct = "%2\$s";
@@ -21,14 +19,11 @@ function FindProxyForURL(url, host) {
     (isIpV4Addr.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || shExpMatch(host, "172.16.*") || shExpMatch(host, "172.17.*") || shExpMatch(host, "172.18.*") || shExpMatch(host, "172.19.*") || shExpMatch(host, "172.20.*") || shExpMatch(host, "172.21.*") || shExpMatch(host, "172.22.*") || shExpMatch(host, "172.23.*") || shExpMatch(host, "172.24.*") || shExpMatch(host, "172.25.*") || shExpMatch(host, "172.26.*") || shExpMatch(host, "172.27.*") || shExpMatch(host, "172.28.*") || shExpMatch(host, "172.29.*") || shExpMatch(host, "172.30.*") || shExpMatch(host, "172.31.*")))){
 		return "DIRECT";
     }
-
     if(shExpMatch(host, "*google*.*") || shExpMatch(host, "*blogspot.*"))
     	return proxy;
-
     var suffix;
     var pos = host.lastIndexOf(".");
     pos = host.lastIndexOf(".", pos - 1);
-
     while(1) {
         if (pos <= 0) {
             if (hasOwnProperty.call(domains, host)) {
@@ -45,7 +40,6 @@ function FindProxyForURL(url, host) {
     }
 }
 PAC_TEMPLATE_SMART;
-
 $PAC_TEMPLATE_ALL = <<<PAC_TEMPLATE_ALL
 var proxy = "%1\$s; DIRECT";
 function FindProxyForURL(url, host) {
@@ -94,7 +88,6 @@ function update(){
 	curl_close($ch);
 	header("Location: ".$_SERVER["PHP_SELF"]);
 }
-
 function parse_gfwlist($content) {
 	$gfwlistContent = base64_decode($content);
 	$gfwlistRules = explode("\n", $gfwlistContent);
@@ -126,7 +119,6 @@ function parse_gfwlist($content) {
 	    if($pos !== false){
 	    	$url = substr($url, 0, $pos);
 	    }
-
 	    $pos = strpos($url, "*");
 	    if($pos !== false){
 	    	$dotpos = strpos($url, ".");
@@ -147,13 +139,10 @@ function parse_gfwlist($content) {
 	foreach ($list as $key => $value) {
 		$gfwlist .= "'$value':1,";
 	}
-
 	return $gfwlist;
 }
-
 // generate pac
 $mode = strtolower(@$_GET["mode"]);
-
 if(strpos($mode, "custom") !== false){
 	if(isset($_GET["proxytype"]) && isset($_GET["proxyserver"]) && isset($_GET["proxyport"])){
 		$PAC_PROXYTYPE = strtoupper($_GET["proxytype"]);
@@ -164,8 +153,6 @@ if(strpos($mode, "custom") !== false){
 		$PAC_DIRECT = $_GET["directserver"].":".$_GET["directport"];
 	}
 }
-
-
 if(strpos($mode, "update") !== false){
 	update();
 }
@@ -176,7 +163,7 @@ foreach ($PAC_LISTURLS as $key => $value) {
 	}else{
 		clearstatcache();
 		if($value === "gfwlist.txt && time() - filemtime($value) > 5){
-			pclose(popen("$_SERVER['PHP_SELF']?mode=update", "r"));
+			pclose(popen($_SERVER["PHP_SELF"]."?mode=update", "r"));
 		}
 	}
 	if(strpos($mode,"mini")  !== false && $value === "gfwlist.txt"){
@@ -188,8 +175,6 @@ foreach ($PAC_LISTURLS as $key => $value) {
 	$domainList .= file_get_contents($value);
 }
 $domainList = implode(array_unique(explode("\n", $domainList)));
-
-
 $pac = "";
 if(strpos($mode, "all") !== false){
 	$pac = sprintf($PAC_TEMPLATE_ALL, $PAC_PROXYTYPE === "HTTP" ? "PROXY $PAC_PROXY" : "SOCKS5 $PAC_PROXY; SOCKS $PAC_PROXY");
@@ -197,6 +182,5 @@ if(strpos($mode, "all") !== false){
 	$pac = sprintf($PAC_TEMPLATE_SMART, $PAC_PROXYTYPE === "HTTP" ? "PROXY $PAC_PROXY" : "SOCKS5 $PAC_PROXY; SOCKS $PAC_PROXY", 
 		$PAC_DIRECT ==="DIRECT" ? "DIRECT" : ($PAC_DIRECTTYPE === "HTTP" ? "PROXY $PAC_DIRECT; DIRECT" : "SOCKS5 $PAC_DIRECT; SOCKS $PAC_DIRECT; DIRECT"), $domainList);
 }
-
 echo $pac;
 ?>
