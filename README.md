@@ -1,5 +1,5 @@
 # SmartPAC
-Fetch the gfwlist and convert it to PAC automaticly.
+Fetch the gfwlist and convert it to PAC automatically.
 
 ## Usage
 [1] Replace the configuration in `config.php`
