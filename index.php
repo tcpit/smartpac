@@ -161,13 +161,14 @@ foreach ($PAC_LISTURLS as $key => $value) {
 	if(file_exists($value) == false){
 		update();
 	}else{
+		// automatically update the gfwlist.txt every 24 hours
 		clearstatcache();
 		if($value === "gfwlist.txt" && time() - filemtime($value) > 24*3600){
 			$fp=fsockopen($_SERVER["HTTP_HOST"], $_SERVER["SERVER_PORT"]);
 			if($fp){
 			    fputs($fp, "GET ".$_SERVER["PHP_SELF"]."?mode=update\r\n");
-				fclose($fp);
 			}
+			fclose($fp);
 		}
 	}
 	if(strpos($mode,"mini")  !== false && $value === "gfwlist.txt"){
