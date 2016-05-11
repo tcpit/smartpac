@@ -86,7 +86,6 @@ function update(){
 		file_put_contents($localFile, $data);
 	}
 	curl_close($ch);
-	file_put_contents("update", time());
 	header("Location: ".$_SERVER["PHP_SELF"]);
 }
 function parse_gfwlist($content) {
