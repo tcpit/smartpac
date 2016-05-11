@@ -86,6 +86,7 @@ function update(){
 		file_put_contents($localFile, $data);
 	}
 	curl_close($ch);
+	file_put_contents("update", time());
 	header("Location: ".$_SERVER["PHP_SELF"]);
 }
 function parse_gfwlist($content) {
@@ -162,8 +163,12 @@ foreach ($PAC_LISTURLS as $key => $value) {
 		update();
 	}else{
 		clearstatcache();
-		if($value === "gfwlist.txt" && time() - filemtime($value) > 5){
-			pclose(popen($_SERVER["PHP_SELF"]."?mode=update", "r"));
+		if($value === "gfwlist.txt" && time() - filemtime($value) > 24*3600){
+			$fp=fsockopen($_SERVER["HTTP_HOST"], $_SERVER["SERVER_PORT"]);
+			if($fp){
+			    fputs($fp, "GET ".$_SERVER["PHP_SELF"]."?mode=update\r\n");
+				fclose($fp);
+			}
 		}
 	}
 	if(strpos($mode,"mini")  !== false && $value === "gfwlist.txt"){
