@@ -162,7 +162,7 @@ foreach ($PAC_LISTURLS as $key => $value) {
 		update();
 	}else{
 		clearstatcache();
-		if($value === "gfwlist.txt && time() - filemtime($value) > 5){
+		if($value === "gfwlist.txt" && time() - filemtime($value) > 5){
 			pclose(popen($_SERVER["PHP_SELF"]."?mode=update", "r"));
 		}
 	}
