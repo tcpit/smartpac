@@ -5,8 +5,8 @@ require_once("config.php");
 *****************************************************************************/
 $PAC_LISTURLS = array(
 	"https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt" => "gfwlist.txt",
-	"https://raw.githubusercontent.com/tcpit/smartpac/master/gfwminilist.txt" => "gfwminilist.txt",
-	"https://raw.githubusercontent.com/tcpit/smartpac/master/index.php" => "index.php",
+	"https://raw.githubusercontent.com/tcpit/SmartPAC/master/gfwminilist.txt" => "gfwminilist.txt",
+	"https://raw.githubusercontent.com/tcpit/SmartPAC/master/index.php" => "index.php",
 	);
 $PAC_TEMPLATE_SMART = <<<PAC_TEMPLATE_SMART
 var proxy = "%1\$s; DIRECT";
