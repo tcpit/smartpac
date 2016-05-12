@@ -55,7 +55,7 @@ PAC_TEMPLATE_ALL;
 * Functions
 *****************************************************************************/
 function update(){
-	global $PAC_LISTURLS, $PAC_PROXYTYPE, $PAC_PROXY;
+	global $PAC_LISTURLS;
 	if(!defined("CURLPROXY_SOCKS5_HOSTNAME")){
 		define("CURLPROXY_SOCKS5_HOSTNAME", 7);
 	}
@@ -72,6 +72,7 @@ function update(){
 		curl_setopt($ch, CURLOPT_PROXY, NULL);
 		$data = curl_exec($ch);
 		if(curl_errno($ch)){
+			global $PAC_PROXYTYPE, $PAC_PROXY;
 			if($PAC_PROXYTYPE === "HTTP"){
 				curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
 			}else{
