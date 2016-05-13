@@ -73,6 +73,7 @@ function update(){
 		$data = curl_exec($ch);
 		if(curl_errno($ch)){
 			global $PAC_PROXYTYPE, $PAC_PROXY;
+			if(empty($PAC_PROXYTYPE) || empty($PAC_PROXY)) exit;
 			if($PAC_PROXYTYPE === "HTTP"){
 				curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
 			}else{
@@ -180,6 +181,7 @@ foreach ($PAC_LISTURLS as $key => $value) {
 	$domainList .= file_get_contents($value);
 }
 $domainList = implode(array_unique(explode("\n", $domainList)));
+if(empty($PAC_PROXYTYPE) || empty($PAC_PROXY)) exit;
 $pac = "";
 if(strpos($mode, "all") !== false){
 	$pac = sprintf($PAC_TEMPLATE_ALL, $PAC_PROXYTYPE === "HTTP" ? "PROXY $PAC_PROXY" : "SOCKS5 $PAC_PROXY; SOCKS $PAC_PROXY");
