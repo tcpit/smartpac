@@ -244,6 +244,7 @@
 'wordpress.com':1,
 'wp.com':1,
 'www.google':1,
+'xuite.net':1,
 'yfrog.com':1,
 'yimg.com':1,
 'youtu.be':1,
