@@ -108,7 +108,6 @@
 'google.sg':1,
 'googleadservices.com':1,
 'googleanalytics.com':1,
-'google-analytics.com':1,
 'googleapis.com':1,
 'googleapps.com':1,
 'googlearth.com':1,
