@@ -13,14 +13,14 @@ var proxy = "%1\$s; DIRECT";
 var direct = "%2\$s";
 var domains = { %3\$s };
 var hasOwnProperty = Object.hasOwnProperty;
-var isIpV4Addr = /^(\d+.){3}\d+$/;
 function FindProxyForURL(url, host) {
-    if(isPlainHostName(host) || shExpMatch(host, "localhost") || shExpMatch(host, "*.local") || shExpMatch(host, "*.google-analytics.com") || 
-    (isIpV4Addr.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || shExpMatch(host, "172.16.*") || shExpMatch(host, "172.17.*") || shExpMatch(host, "172.18.*") || shExpMatch(host, "172.19.*") || shExpMatch(host, "172.20.*") || shExpMatch(host, "172.21.*") || shExpMatch(host, "172.22.*") || shExpMatch(host, "172.23.*") || shExpMatch(host, "172.24.*") || shExpMatch(host, "172.25.*") || shExpMatch(host, "172.26.*") || shExpMatch(host, "172.27.*") || shExpMatch(host, "172.28.*") || shExpMatch(host, "172.29.*") || shExpMatch(host, "172.30.*") || shExpMatch(host, "172.31.*")))){
-		return "DIRECT";
+    if(isPlainHostName(host) || shExpMatch(host, "*.local") || shExpMatch(host, "*.google-analytics.com") || 
+    (/^(\d+\.){3}\d+$/.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || /^172\.(1[6-9]|2[0-9]|3[0-1])\.\d+\.\d+$/.test(host)))){
+        return "DIRECT";
     }
-    if(shExpMatch(host, "*google.*") || shExpMatch(host, "*blogspot.*"))
+    if(/^(.*\.?)(google|blogspot)\.(.*)$/.test(host)){
     	return proxy;
+    }
     var suffix;
     var pos = host.lastIndexOf(".");
     pos = host.lastIndexOf(".", pos - 1);
@@ -43,10 +43,9 @@ PAC_TEMPLATE_SMART;
 $PAC_TEMPLATE_ALL = <<<PAC_TEMPLATE_ALL
 var proxy = "%1\$s; DIRECT";
 function FindProxyForURL(url, host) {
-    var isIpV4Addr = /^(\d+.){3}\d+$/;
-    if(isPlainHostName(host) || shExpMatch(host, "localhost") || shExpMatch(host, "*.local") || shExpMatch(host, "*.google-analytics.com") || 
-    (isIpV4Addr.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || shExpMatch(host, "172.16.*") || shExpMatch(host, "172.17.*") || shExpMatch(host, "172.18.*") || shExpMatch(host, "172.19.*") || shExpMatch(host, "172.20.*") || shExpMatch(host, "172.21.*") || shExpMatch(host, "172.22.*") || shExpMatch(host, "172.23.*") || shExpMatch(host, "172.24.*") || shExpMatch(host, "172.25.*") || shExpMatch(host, "172.26.*") || shExpMatch(host, "172.27.*") || shExpMatch(host, "172.28.*") || shExpMatch(host, "172.29.*") || shExpMatch(host, "172.30.*") || shExpMatch(host, "172.31.*")))){
-		return "DIRECT";
+    if(isPlainHostName(host) || shExpMatch(host, "*.local") || shExpMatch(host, "*.google-analytics.com") || 
+    (/^(\d+\.){3}\d+$/.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || /^172\.(1[6-9]|2[0-9]|3[0-1])\.\d+\.\d+$/.test(host)))){
+        return "DIRECT";
     }
     return proxy;
 }
