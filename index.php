@@ -14,8 +14,7 @@ var direct = "%2\$s";
 var domains = { %3\$s };
 var hasOwnProperty = Object.hasOwnProperty;
 function FindProxyForURL(url, host) {
-    if(isPlainHostName(host) || shExpMatch(host, "*.local") || shExpMatch(host, "*.google-analytics.com") || 
-    (/^(\d+\.){3}\d+$/.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || /^172\.(1[6-9]|2[0-9]|3[0-1])\.\d+\.\d+$/.test(host)))){
+    if(isPlainHostName(host) || shExpMatch(host, "*.local")  || (/^(\d+\.){3}\d+$/.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || /^172\.(1[6-9]|2[0-9]|3[0-1])\.\d+\.\d+$/.test(host)))){
         return "DIRECT";
     }
     if(/^(.*\.?)(google|blogspot)\.(.*)$/.test(host)){
@@ -43,8 +42,7 @@ PAC_TEMPLATE_SMART;
 $PAC_TEMPLATE_ALL = <<<PAC_TEMPLATE_ALL
 var proxy = "%1\$s; DIRECT";
 function FindProxyForURL(url, host) {
-    if(isPlainHostName(host) || shExpMatch(host, "*.local") || shExpMatch(host, "*.google-analytics.com") || 
-    (/^(\d+\.){3}\d+$/.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || /^172\.(1[6-9]|2[0-9]|3[0-1])\.\d+\.\d+$/.test(host)))){
+    if(isPlainHostName(host) || shExpMatch(host, "*.local") || (/^(\d+\.){3}\d+$/.test(host) && (shExpMatch(host, "10.*") || shExpMatch(host, "127.*") || shExpMatch(host, "192.168.*") || /^172\.(1[6-9]|2[0-9]|3[0-1])\.\d+\.\d+$/.test(host)))){
         return "DIRECT";
     }
     return proxy;
