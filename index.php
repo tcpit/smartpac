@@ -135,7 +135,7 @@ function parse_gfwlist($content) {
 	
 	$gfwlist = "";
 	foreach ($list as $key => $value) {
-		$gfwlist .= "'$value':1,\n";
+		$gfwlist .= "'$value':1,\r\n";
 	}
 	return $gfwlist;
 }
