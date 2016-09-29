@@ -27,6 +27,7 @@
 'blogger.com':1,
 'blogspot.com':1,
 'buff.ly':1,
+'cdn0.opera-mini.net':1,
 'cdn-apple.com':1,
 'cdninstagram.com':1,
 'certificate-transparency.org':1,
