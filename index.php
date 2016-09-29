@@ -135,7 +135,7 @@ function parse_gfwlist($content) {
 	
 	$gfwlist = "";
 	foreach ($list as $key => $value) {
-		$gfwlist .= "\"$value\":1,\r\n";
+		$gfwlist .= "'$value':1,";
 	}
 	return $gfwlist;
 }
@@ -177,7 +177,7 @@ foreach ($PAC_LISTURLS as $key => $value) {
 	}
 	$domainList .= file_get_contents($value);
 }
-//$domainList = implode(array_unique(explode("\n", $domainList)));
+$domainList = rtrim(implode(array_unique(explode("\n", $domainList))), ",");
 if(empty($PAC_PROXYTYPE) || empty($PAC_PROXY)) exit;
 $pac = "";
 if(strpos($mode, "all") !== false){
