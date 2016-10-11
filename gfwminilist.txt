@@ -47,6 +47,7 @@
 'doubleclick.com':1,
 'doubleclick.net':1,
 'doubleclickbygoogle.com':1,
+'downloads.apps.opera.com':1,
 'dropbox.com':1,
 'dropboxstatic.com':1,
 'dropboxusercontent.com':1,
