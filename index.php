@@ -154,7 +154,37 @@ if(strpos($mode, "custom") !== false || strpos($mode, "ct") !== false){
 		$PAC_DIRECTTYPE = strtoupper(isset($_GET["directtype"])?$_GET["directtype"]:$_GET["dt"]);
 		$PAC_DIRECT = (isset($_GET["directserver"])?$_GET["directserver"]:$_GET["ds"]).":".(isset($_GET["directport"])?$_GET["directport"]:$_GET["dp"]);
 	}
+}else{
+	//proxy
+	if(isset($_GET["proxytype"]) || isset($_GET["t"])){
+		$PAC_PROXYTYPE = strtoupper(isset($_GET["proxytype"]) ? $_GET["proxytype"] : $_GET["t"]);
+	}
+	$parts = explode(":", $PAC_PROXY);
+	if(isset($_GET["proxyserver"]) || isset($_GET["s"])){
+		$PAC_PROXY = (isset($_GET["proxyserver"])?$_GET["proxyserver"]:$_GET["s"]).":".$parts[1];
+	}
+	if(isset($_GET["proxyport"]) || isset($_GET["p"])){
+		$PAC_PROXY = $parts[0].":".(isset($_GET["proxyport"])?$_GET["proxyport"]:$_GET["p"]);
+	}
+	//direct
+	if(isset($_GET["directtype"]) || isset($_GET["dt"])){
+		$PAC_DIRECTTYPE = strtoupper(isset($_GET["directtype"]) ? $_GET["directtype"] : $_GET["dt"]);
+	}
+	if(strtoupper($PAC_DIRECT) === "DIRECT" && (isset($_GET["directserver"]) || isset($_GET["ds"])) && (isset($_GET["directport"]) || isset($_GET["dp"]))){
+		$PAC_DIRECT = (isset($_GET["directserver"])?$_GET["directserver"]:$_GET["ds"]).":".(isset($_GET["directport"])?$_GET["directport"]:$_GET["dp"]);
+	}else{
+		$parts = explode(":", $PAC_DIRECT);
+		if(count($parts) === 2){
+			if(isset($_GET["directserver"]) || isset($_GET["ds"])){
+				$PAC_DIRECT = (isset($_GET["directserver"])?$_GET["directserver"]:$_GET["ds"]).":".$parts[1];
+			}
+			if(isset($_GET["directport"]) || isset($_GET["dp"])){
+				$PAC_DIRECT = $parts[0].":".(isset($_GET["directport"])?$_GET["directport"]:$_GET["dp"]);
+			}
+		}
+	}
 }
+
 if(strpos($mode, "update") !== false){
 	update();
 }
