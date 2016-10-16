@@ -140,15 +140,19 @@ function parse_gfwlist($content) {
 	return $gfwlist;
 }
 // generate pac
-$mode = strtolower(@$_GET["mode"]);
-if(strpos($mode, "custom") !== false){
-	if(isset($_GET["proxytype"]) && isset($_GET["proxyserver"]) && isset($_GET["proxyport"])){
-		$PAC_PROXYTYPE = strtoupper($_GET["proxytype"]);
-		$PAC_PROXY = $_GET["proxyserver"].":".$_GET["proxyport"];
+$mode = isset($_GET["mode"])?strtolower($_GET["mode"]):strtolower(@$_GET["m"]);
+if(strpos($mode, "custom") !== false || strpos($mode, "ct") !== false){
+	if((isset($_GET["proxytype"]) || isset($_GET["t"]))
+	   && (isset($_GET["proxyserver"]) || isset($_GET["s"]))
+	   && (isset($_GET["proxyport"]) || isset($_GET["p"]))){
+		$PAC_PROXYTYPE = strtoupper(isset($_GET["proxytype"]) ? $_GET["proxytype"] : $_GET["t"]);
+		$PAC_PROXY = (isset($_GET["proxyserver"])?$_GET["proxyserver"]:$_GET["s"]).":".(isset($_GET["proxyport"])?$_GET["proxyport"]:$_GET["p"]);
 	}
-	if(isset($_GET["directtype"]) && isset($_GET["directserver"]) && isset($_GET["directport"])){
-		$PAC_DIRECTTYPE = strtoupper($_GET["directtype"]);
-		$PAC_DIRECT = $_GET["directserver"].":".$_GET["directport"];
+	if((isset($_GET["directtype"]) || isset($_GET["dt"]))
+	   && (isset($_GET["directserver"]) || isset($_GET["ds"]))
+	   && (isset($_GET["directport"]) || isset($_GET["dp"]))){
+		$PAC_DIRECTTYPE = strtoupper(isset($_GET["directtype"])?$_GET["directtype"]:$_GET["dt"]);
+		$PAC_DIRECT = (isset($_GET["directserver"])?$_GET["directserver"]:$_GET["ds"]).":".(isset($_GET["directport"])?$_GET["directport"]:$_GET["dp"]);
 	}
 }
 if(strpos($mode, "update") !== false){
