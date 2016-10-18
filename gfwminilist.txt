@@ -222,6 +222,7 @@
 'typeket.net':1,
 'tzangms.com':1,
 'urchin.com':1,
+'userscripts.org':1,
 'v2ex.co':1,
 'v2ex.com':1,
 'vimeo.com':1,
