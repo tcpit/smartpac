@@ -227,6 +227,7 @@
 'v2ex.com':1,
 'vimeo.com':1,
 'w.org':1,
+'w3schools.com':1,
 'waze.com':1,
 'webmproject.org':1,
 'whatbrowser.org':1,
