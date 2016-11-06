@@ -44,6 +44,7 @@
 'deja.com':1,
 'digisfera.com':1,
 'disqus.com':1,
+'disquscdn.com':1,
 'domains.google':1,
 'doubleclick.com':1,
 'doubleclick.net':1,
