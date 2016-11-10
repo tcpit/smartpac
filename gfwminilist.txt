@@ -160,6 +160,7 @@
 'localhost.com':1,
 'madewithcode.com':1,
 'mediawiki.org':1,
+'medium.com':1,
 'mktoresp.com':1,
 'mozilla.net':1,
 'mzstatic.com':1,
