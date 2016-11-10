@@ -173,6 +173,7 @@
 'nytlog.com':1,
 'onedrive.live.com':1,
 'openshift.com':1,
+'openshift.redhat.com':1,
 'opera.com':1,
 'operacdn.com':1,
 'optimize.ly':1,
