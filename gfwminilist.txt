@@ -183,6 +183,7 @@
 'picasaweb.com':1,
 'pixnet.net':1,
 'polymer-project.org':1,
+'read01.com':1,
 'recaptcha.net':1,
 'registry.google':1,
 'reuters.com':1,
