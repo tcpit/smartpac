@@ -20,6 +20,7 @@
 'appspot.com':1,
 'awsstatic.com':1,
 'baiducontent.com':1,
+'bbc.co.uk':1,
 'bbc.com':1,
 'bit.ly':1,
 'bitly.com':1,
