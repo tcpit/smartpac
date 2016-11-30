@@ -18,6 +18,7 @@
 'angrybirds.com':1,
 'apple.com':1,
 'appspot.com':1,
+'archive.org':1,
 'awsstatic.com':1,
 'baiducontent.com':1,
 'bbc.co.uk':1,
