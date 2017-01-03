@@ -182,6 +182,7 @@
 'operacdn.com':1,
 'optimize.ly':1,
 'optimizely.com':1,
+'ow.ly':1,
 'panoramio.com':1,
 'picasa.com':1,
 'picasaweb.com':1,
