@@ -160,12 +160,15 @@ if(strpos($mode, "custom") !== false || strpos($mode, "ct") !== false){
 		$PAC_PROXYTYPE = strtoupper(isset($_GET["proxytype"]) ? $_GET["proxytype"] : $_GET["t"]);
 	}
 	$parts = explode(":", $PAC_PROXY);
+	$PAC_SERVER = $parts[0];
+	$PAC_PORT = $parts[1];
 	if(isset($_GET["proxyserver"]) || isset($_GET["s"])){
-		$PAC_PROXY = (isset($_GET["proxyserver"])?$_GET["proxyserver"]:$_GET["s"]).":".$parts[1];
+		$PAC_SERVER = (isset($_GET["proxyserver"])?$_GET["proxyserver"]:$_GET["s"]);
 	}
 	if(isset($_GET["proxyport"]) || isset($_GET["p"])){
-		$PAC_PROXY = $parts[0].":".(isset($_GET["proxyport"])?$_GET["proxyport"]:$_GET["p"]);
+		$PAC_PORT = (isset($_GET["proxyport"])?$_GET["proxyport"]:$_GET["p"]);
 	}
+	$PAC_PROXY = $PAC_SERVER.":".$PAC_PORT;
 	//direct
 	if(isset($_GET["directtype"]) || isset($_GET["dt"])){
 		$PAC_DIRECTTYPE = strtoupper(isset($_GET["directtype"]) ? $_GET["directtype"] : $_GET["dt"]);
