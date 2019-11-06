@@ -6,7 +6,6 @@
 'cnki.net':2,
 'cqvip.com':2,
 'doi.org':2,
-'edu.cn':2,
 'els-cdn.com':2,
 'elsevier.com':2,
 'engineeringvillage.com':2,
