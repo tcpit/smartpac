@@ -6,7 +6,6 @@ cnki.com.cn
 cnki.net
 cqvip.com
 doi.org
-edu.cn
 els-cdn.com
 elsevier.com
 engineeringvillage.com
