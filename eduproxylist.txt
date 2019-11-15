@@ -1,7 +1,6 @@
 acm.org
 ams.org
 annualreviews.org
-arxiv.org
 cnki.com.cn
 cnki.net
 cqvip.com
