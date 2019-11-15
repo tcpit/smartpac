@@ -1,7 +1,6 @@
 'acm.org':2,
 'ams.org':2,
 'annualreviews.org':2,
-'arxiv.org':2,
 'cnki.com.cn':2,
 'cnki.net':2,
 'cqvip.com':2,
